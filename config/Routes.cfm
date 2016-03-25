@@ -20,10 +20,13 @@
 
 	// Your Application Routes
 	addRoute(
-		 pattern = 'contacts/:contactID?'	,handler = 'contacts'	,action = {GET = 'view', POST = 'save', PUT = 'save', DELETE = 'remove'}
+		pattern = 'contacts/:contactID?',
+		handler = 'contacts',
+		action = {GET = 'view', POST = 'save', PUT = 'save', DELETE = 'remove'}
 	);
+	
 	addRoute(
-			pattern=":handler/:action?"	
+		pattern=":handler/:action?"	
 	);
 
 

@@ -31,6 +31,7 @@
 			      <div class="form-group"><input v-model="contactItem.phone" 	class="form-control" value="" placeholder="Phone"></div>
 			      <div class="form-group"><input v-model="contactItem.email" 	class="form-control" value="" placeholder="Email"></div>
 			      <button class="btn btn-primary"  @click="saveContact()">Submit</button>
+			      <button class="btn btn-warning"  @click="cancelSave()">Cancel</button>
 			    </div>
 			  </div>
 			</div>
