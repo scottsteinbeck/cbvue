@@ -1,0 +1,7 @@
+.settings
+logs/*.log
+settings.xml
+tests/results/*
+coldbox/*
+testbox/*
+build/*
