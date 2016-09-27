@@ -5,3 +5,6 @@ tests/results/*
 coldbox/*
 testbox/*
 build/*
+**/node_modules/*
+**/bower_components/*
+modules/*
