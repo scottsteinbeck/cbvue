@@ -1,6 +1,5 @@
-<script>
-$( document ).ready( function(){
-	new Vue( {
+new Vue( {
+		
 		// Where the app will be instantiated on the page
 		el : '#app',
 
@@ -13,7 +12,16 @@ $( document ).ready( function(){
 				phone 		: '',
 				email 		: ''
 		  	},
-		  	contacts : []
+		  	contacts : [],
+		  	contactFilter : "",
+		},
+
+		// Computed Properties
+		computed : {
+			isContactsLoaded : function(){
+				console.log( this.$get( "contacts" ).length );
+				return this.contacts.length ? true : false;
+			}
 		},
 
 		// When this module is ready run this
@@ -60,5 +68,3 @@ $( document ).ready( function(){
 			}
 		}
 	} );
-} );
-</script>

@@ -1,28 +1,41 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<meta name="description" content="">
-		<meta name="author" content="Ortus Solutions, Corp">
-		<link rel="icon" href="favicon.ico">
+<cfoutput>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Welcome to ColdBox & VueJS!</title>
+	<meta name="description" content="">
+    <meta name="author" content="Ortus Solutions, Corp">
+	<!---Base URL --->
+	<base href="#event.getHTMLBaseURL()#" />
+	<!---css --->
+	<link href="includes/css/App.css" rel="stylesheet">
+	<!--- vendor js --->
+	<cfif getSetting( "environment" ) == "development">
+		<script src="includes/js/vendor-dev.js"></script>
+	<cfelse>
+		<script src="includes/js/vendor.min.js"></script>
+	</cfif>
+</head>
+<body>
+	<!---Container And Views --->
+	<div class="container">#renderView()#</div>
 
-		<title>ColdBox & Vue.js</title>
-
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-		<script type="text/javascript" src="http://cdn.jsdelivr.net/vue/1.0.18/vue.min.js"></script>
-		<script type="text/javascript" src="https://rawgit.com/vuejs/vue-resource/master/dist/vue-resource.min.js"></script>
-		
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	</head>
-	<body>
-		<main>
-		<cfoutput>#renderView()#</cfoutput>
-		</main>
-	</body>
+	<footer class="footer">
+		<p class="pull-right">
+			<a href="##"><i class="glyphicon glyphicon-arrow-up"></i> Back to top</a>
+		</p>
+		<p>
+			<a href="http://www.coldbox.org">ColdBox Platform</a> is a copyright-trademark software by
+			<a href="http://www.ortussolutions.com">Ortus Solutions, Corp</a>
+		</p>
+		<p>
+			Design thanks to
+			<a href="http://twitter.github.com/bootstrap">Twitter Boostrap</a>
+		</p>
+	</footer>
+	<!--- App JS --->
+	<script src="includes/js/App.js"></script>
+</body>
 </html>
+</cfoutput>

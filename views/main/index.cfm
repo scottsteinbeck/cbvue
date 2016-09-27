@@ -47,8 +47,13 @@
 						</div>
 						
 						<div class="form-group">
-							<button class="btn btn-default"  @click="resetContact()">Reset</button>
-							<button class="btn btn-primary"  @click="saveContact()">Submit</button>
+							<button class="btn btn-default"
+									type="reset" 
+									@click="resetContact()"
+							>Reset</button>
+							<button class="btn btn-primary"  
+									@click="saveContact()"
+							>Submit</button>
 						</div>
 					</form>
 			    </div>
@@ -57,7 +62,13 @@
 		</div>
 
 		<div class="col-sm-8">
-			<table class="table table-hover table-striped">
+			<input 	type="text"
+					class="form-control"
+					placeholder="filter..."
+					value=""
+					v-model="contactFilter"
+			>
+			<table class="table table-hover table-striped" v-cloak>
 			  <thead>
 			    <tr>
 			      <th>First Name</th>
@@ -68,7 +79,7 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr v-for="contact in contacts">
+			    <tr v-for="contact in contacts | filterBy contactFilter in 'firstName' 'lastName' 'email' | orderBy 'lastName'">
 			      <td>{{ contact.firstName }}</td>
 			      <td>{{ contact.lastName }}</td>
 			      <td>{{ contact.phone }}</td>
@@ -78,17 +89,22 @@
 			      		<button @click="loadContact( contact )"  
 			      				type="button" 
 			      				class="btn btn-primary"
-			      		>Edit</button>
+			      		><i class="fa fa-edit"></i></button>
 			      		<button @click="deleteContact( contact )"  
 			      				type="button" 
 			      				class="btn btn-danger"
-			      		>X</button>
+			      		><i class="fa fa-trash"></i></button>
 			      	</div>
 			      </td>
 			    </tr>
 			  </tbody>
 			</table>
+
+			<div class="text-center" v-show="contacts.length == 0">
+				<i class="fa fa-spinner fa-spin fa-4x"></i>
+			</div>
 		</div>
 
 	</div>
+
 </div>
