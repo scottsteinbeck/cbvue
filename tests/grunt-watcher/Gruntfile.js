@@ -8,6 +8,18 @@ module.exports = function( grunt ){
 		// read configs
 		pkg : grunt.file.readJSON( "package.json" ),
 
+		// Node Runner
+		exec : {
+			node_tests : {
+				cwd : "../../",
+				command : 'testbox-runner'
+			},
+			box_tests : {
+				cwd : "../../",
+				command : 'box testbox run reporter="mintext"'
+			}
+		},
+
 		// Watch
 		watch : {
 			tests : {
@@ -16,6 +28,7 @@ module.exports = function( grunt ){
 					'../../models/**/*.cfc',
 					'../../handlers/**/*.cfc' 
 				],
+				tasks : [  "exec:box_tests" ],
 				options : {
 					livereload : true
 				}
