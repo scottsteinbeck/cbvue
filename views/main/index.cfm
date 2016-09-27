@@ -17,26 +17,47 @@
     </div><!--/.nav-collapse -->
   </div>
 </nav>
+
 <div id="app" class="container">
 	<div class="row">
+		
 		<div class="col-sm-4">
 			<div class="panel panel-default">
-			  <div class="panel-heading">
-			    <strong>Add/Edit Contact</strong>
-			  </div>
-			  <div class="panel-body">
-			    <div>
-			      <div class="form-group"><input v-model="contactItem.firstName" class="form-control" value="" placeholder="First Name"></div>
-			      <div class="form-group"><input v-model="contactItem.lastName" 	class="form-control" value="" placeholder="Last Name"></div>
-			      <div class="form-group"><input v-model="contactItem.phone" 	class="form-control" value="" placeholder="Phone"></div>
-			      <div class="form-group"><input v-model="contactItem.email" 	class="form-control" value="" placeholder="Email"></div>
-			      <button class="btn btn-primary"  @click="saveContact()">Submit</button>
+
+			  	<div class="panel-heading">
+			   		<strong>Add/Edit Contact</strong>
+			  	</div>
+			  	
+			  	<div class="panel-body">
+			  		<form id="contactForm">
+						<div class="form-group">
+							<input v-model="contactItem.firstName" class="form-control" value="" placeholder="First Name">
+						</div>
+
+						<div class="form-group">
+							<input v-model="contactItem.lastName" class="form-control" value="" placeholder="Last Name">
+						</div>
+
+						<div class="form-group">
+							<input v-model="contactItem.phone" 	class="form-control" value="" placeholder="Phone">
+						</div>
+
+						<div class="form-group">
+							<input type="email" v-model="contactItem.email" class="form-control" value="" placeholder="Email" required="required">
+						</div>
+						
+						<div class="form-group">
+							<button class="btn btn-default"  @click="resetContact()">Reset</button>
+							<button class="btn btn-primary"  @click="saveContact()">Submit</button>
+						</div>
+					</form>
 			    </div>
-			  </div>
+
 			</div>
 		</div>
+
 		<div class="col-sm-8">
-			<table class="table">
+			<table class="table table-hover table-striped">
 			  <thead>
 			    <tr>
 			      <th>First Name</th>
@@ -48,15 +69,26 @@
 			  </thead>
 			  <tbody>
 			    <tr v-for="contact in contacts">
-			      <td>{{contact.firstName}}</td>
-			      <td>{{contact.lastName}}</td>
-			      <td>{{contact.phone}}</td>
-			      <td>{{contact.email}}</td>
-			      <td><button @click="loadContact(contact)"  type="button" class="btn btn-primary">Edit</button></td>
-			      <td><button @click="deleteContact(contact)"  type="button" class="btn btn-danger">X</button></td>
+			      <td>{{ contact.firstName }}</td>
+			      <td>{{ contact.lastName }}</td>
+			      <td>{{ contact.phone }}</td>
+			      <td>{{ contact.email }}</td>
+			      <td>
+			      	<div class="btn-group" role="group" aria-label="...">
+			      		<button @click="loadContact( contact )"  
+			      				type="button" 
+			      				class="btn btn-primary"
+			      		>Edit</button>
+			      		<button @click="deleteContact( contact )"  
+			      				type="button" 
+			      				class="btn btn-danger"
+			      		>X</button>
+			      	</div>
+			      </td>
 			    </tr>
 			  </tbody>
 			</table>
 		</div>
+
 	</div>
 </div>

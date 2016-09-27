@@ -20,7 +20,7 @@ component extends="BaseHandler"{
 	*/
 	any function save( event, rc, prc ){
 		var requestBody = event.getHTTPContent( json=true );
-		var sContacts = contactService.save( requestBody.id, requestBody );
+		var sContacts 	= contactService.save( requestBody.id, requestBody );
 		prc.response.setData( sContacts );
 	}
 

@@ -1,87 +1,40 @@
 {
     "name":"CBVue",
-    "version":"0.0.0",
-    "author":"",
-    "location":"",
-    "directory":"",
-    "createPackageDirectory":true,
-    "packageDirectory":"",
-    "homepage":"",
-    "documentation":"",
+    "version":"1.0.0",
+    "author":"Ortus Solutions, Corp",
+    "homepage":"https://github.com/coldbox-samples/cbvue",
+    "documentation":"https://github.com/coldbox-samples/cbvue",
     "repository":{
-        "type":"",
-        "URL":""
+        "type":"git",
+        "URL":"https://github.com/coldbox-samples/cbvue"
     },
-    "bugs":"",
+    "bugs":"https://github.com/coldbox-samples/cbvue/issues",
     "slug":"CBVue",
-    "shortDescription":"A sweet package",
-    "description":"",
-    "instructions":"",
-    "changelog":"",
-    "type":"",
-    "keywords":[
-        
-    ],
-    "private":false,
-    "engines":[
-        {
-            "type":"",
-            "version":""
-        }
-    ],
-    "defaultEngine":"",
-    "defaultPort":0,
-    "projectURL":"",
-    "license":[
-        {
-            "type":"",
-            "URL":""
-        }
-    ],
+    "shortDescription":"A ColdBox + VueJS Contact Manager",
+    "type":"projects",
     "contributors":[
         
     ],
     "dependencies":{
-        "coldbox":"4.1.0+00002"
+        "coldbox":"be",
+        "testbox":"be"
     },
     "devDependencies":{
         
     },
     "installPaths":{
-        "coldbox":"coldbox"
+        "coldbox":"coldbox",
+        "testbox":"testbox"
     },
     "ignore":[
         "**/.*",
-        "test",
         "tests"
     ],
     "testbox":{
         "runner":[
             {
-                "default":""
+                "default":"http://127.0.0.1:11254/tests/runner.cfm"
             }
-        ],
-        "labels":[
-            
-        ],
-        "reporter":"",
-        "reporterResults":"",
-        "bundles":[
-            ""
-        ],
-        "directory":{
-            "mapping":"",
-            "recurse":true
-        },
-        "watchers":[
-            
-        ],
-        "notify":{
-            "emails":[
-                
-            ],
-            "growl":"",
-            "URL":""
-        }
+        ]
     }
 }

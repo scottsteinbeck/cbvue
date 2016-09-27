@@ -6,7 +6,7 @@ www.ortussolutions.com
 */
 component{
 	// Application properties
-	this.name = hash( getCurrentTemplatePath() );
+	this.name = "CBVue" & hash( getCurrentTemplatePath() );
 	this.sessionManagement = true;
 	this.sessionTimeout = createTimeSpan(0,0,30,0);
 	this.setClientCookies = true;
@@ -19,9 +19,6 @@ component{
 	COLDBOX_CONFIG_FILE 	 = "";
 	// COLDBOX APPLICATION KEY OVERRIDE
 	COLDBOX_APP_KEY 		 = "";
-	// JAVA INTEGRATION: JUST DROP JARS IN THE LIB FOLDER
-	// You can add more paths or change the reload flag as well.
-	this.javaSettings = { loadPaths = [ "lib" ], reloadOnChange = false };
 
 	// application start
 	public boolean function onApplicationStart(){

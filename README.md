@@ -3,7 +3,7 @@ A Contact Editor using Vue.js and ColdBox REST API
 
 ## Dependencies
 - CommandBox
-- Coldbox Framework
+- ColdBox Framework
 - Vue.js
 - Vue Resource (for Restful Methods)
 - Boostrap

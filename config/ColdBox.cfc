@@ -10,7 +10,7 @@ component{
 
 			//Development Settings
 			reinitPassword			= "",
-			handlersIndexAutoReload = true,
+			handlersIndexAutoReload = false,
 
 			//Implicit Events
 			defaultEvent			= "Main.index",
@@ -25,7 +25,7 @@ component{
 			//Extension Points
 			applicationHelper 			= "includes/helpers/ApplicationHelper.cfm",
 			viewsHelper					= "",
-			modulesExternalLocation		= [ "modules_app" ],
+			modulesExternalLocation		= [],
 			viewsExternalLocation		= "",
 			layoutsExternalLocation 	= "",
 			handlersExternalLocation  	= "",
@@ -52,7 +52,7 @@ component{
 		// create a function with the name of the environment so it can be executed if that environment is detected
 		// the value of the environment is a list of regex patterns to match the cgi.http_host.
 		environments = {
-			development = "localhost,^127"
+			development = "localhost,^127\.0\.0"
 		};
 
 		// Module Directives
@@ -69,18 +69,12 @@ component{
 		logBox = {
 			// Define Appenders
 			appenders = {
-				coldboxTracer = { class="coldbox.system.logging.appenders.ConsoleAppender" }
+				console = { class="coldbox.system.logging.appenders.ConsoleAppender" }
 			},
 			// Root Logger
 			root = { levelmax="INFO", appenders="*" },
 			// Implicit Level Categories
 			info = [ "coldbox.system" ]
-		};
-
-		//Layout Settings
-		layoutSettings = {
-			defaultLayout = "",
-			defaultView   = ""
 		};
 
 		//Interceptor Settings
@@ -140,6 +134,8 @@ component{
 	*/
 	function development(){
 		coldbox.customErrorTemplate = "/coldbox/system/includes/BugReport.cfm";
+		coldbox.handlersIndexAutoReload = true;
+		coldbox.handlerCaching = false;
 	}
 
 }

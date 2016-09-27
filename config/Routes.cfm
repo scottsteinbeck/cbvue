@@ -11,41 +11,20 @@
 	// setThrowOnInvalidExtension(true);
 
 	// Base URL
-	if( len(getSetting('AppMapping') ) lte 1){
-		setBaseURL("http://#cgi.HTTP_HOST#/index.cfm");
-	}
-	else{
-		setBaseURL("http://#cgi.HTTP_HOST#/#getSetting('AppMapping')#/index.cfm");
+	if( len( getSetting( 'AppMapping' ) ) lte 1 ){
+		setBaseURL( "http://#cgi.HTTP_HOST#/index.cfm" );
+	} else {
+		setBaseURL( "http://#cgi.HTTP_HOST#/#getSetting('AppMapping')#/index.cfm" );
 	}
 
 	// Your Application Routes
 	addRoute(
-		 pattern = 'contacts/:contactID?'	,handler = 'contacts'	,action = {GET = 'view', POST = 'save', PUT = 'save', DELETE = 'remove'}
+		pattern = 'contacts/:contactID?',
+		handler = 'contacts',
+		action 	= { GET = 'view', POST = 'save', PUT = 'save', DELETE = 'remove' }
 	);
 	addRoute(
-			pattern=":handler/:action?"	
+		pattern=":handler/:action?"	
 	);
 
-
-	/** Developers can modify the CGI.PATH_INFO value in advance of the SES
-		interceptor to do all sorts of manipulations in advance of route
-		detection. If provided, this function will be called by the SES
-		interceptor instead of referencing the value CGI.PATH_INFO.
-
-		This is a great place to perform custom manipulations to fix systemic
-		URL issues your Web site may have or simplify routes for i18n sites.
-
-		@Event The ColdBox RequestContext Object
-	**/
-	function PathInfoProvider(Event){
-		/* Example:
-		var URI = CGI.PATH_INFO;
-		if (URI eq "api/foo/bar")
-		{
-			Event.setProxyRequest(true);
-			return "some/other/value/for/your/routes";
-		}
-		*/
-		return CGI.PATH_INFO;
-	}
 </cfscript>
