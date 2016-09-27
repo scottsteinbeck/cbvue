@@ -1,6 +1,7 @@
 var elixir = require( 'coldbox-elixir' );
 var del 	= require( 'del' );
 var gulp 	= require( 'gulp' );
+var shell 	= require( 'gulp-shell' );
 
 /*********************************************************************************/
 /* 								Gulp TASKS 										 */
@@ -13,6 +14,9 @@ gulp.task( 'cleanup', function(){
 	    'includes/fonts'
 	] );
 });
+
+gulp.task( 'tests', shell.task( 'box testbox run reporter="mintext"' ) );
+gulp.watch( [ 'handlers/**', 'tests/**/*.cfc', 'models/**/*.cfc' ], [ 'tests' ]  );
 
 /*********************************************************************************/
 /* 								Elixir TASKS 									 */
