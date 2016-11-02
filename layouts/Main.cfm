@@ -7,7 +7,7 @@
 	<meta name="description" content="">
     <meta name="author" content="Ortus Solutions, Corp">
 	<!---Base URL --->
-	<base href="#event.getHTMLBaseURL()#" />
+	<!--- <base href="#event.getHTMLBaseURL()#" /> --->
 	<!---css --->
 	<link href="includes/css/App.css" rel="stylesheet">
 	<!--- vendor js --->
