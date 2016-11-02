@@ -1,0 +1,5 @@
+{
+    "runner": "http://127.0.0.1:11254/tests/runner.cfm",
+    "directory": "/tests/specs",
+    "recurse": true
+}

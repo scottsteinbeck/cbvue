@@ -19,8 +19,8 @@ component extends="BaseHandler"{
 	* Save A Contact
 	*/
 	any function save( event, rc, prc ){
-		var requestBody = deserializeJSON( toString( getHTTPRequestData().content ) );
-		var sContacts = contactService.save( requestBody.id, requestBody );
+		var requestBody = event.getHTTPContent( json=true );
+		var sContacts 	= contactService.save( requestBody.id, requestBody );
 		prc.response.setData( sContacts );
 	}
 
