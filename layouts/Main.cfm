@@ -11,7 +11,7 @@
 	<!---css --->
 	<link href="includes/css/App.css" rel="stylesheet">
 	<!--- vendor js --->
-	<cfif getSetting( "environment" ) == "development">
+	<cfif getSetting( "environment" ) EQ "development">
 		<script src="includes/js/vendor-dev.js"></script>
 	<cfelse>
 		<script src="includes/js/vendor.min.js"></script>
