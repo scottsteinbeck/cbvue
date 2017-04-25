@@ -22,11 +22,16 @@ component extends="coldbox.system.testing.BaseModelTest" model="root.models.Cont
 	
 	function run(){
 
-		describe( "ContactService Suite", function(){
+		describe( "Contact Service", function(){
 			
-			it( "should getAll", function(){
+			it( "should get all contacts", function(){
                 var results = model.getAll();
                 expect(	results.len() ).toBeGT( 5 );
+			});
+
+			it( "should get a single contact", function(){
+				var results = model.get( 2 );
+				expect(	results.lastname ).toBe( "Coldwell" );
 			});
 
 			it( "should save a new contact", function(){

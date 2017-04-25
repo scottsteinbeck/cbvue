@@ -1,23 +1,3 @@
-<!-- Static navbar -->
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Coldbox & Vue.js</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Contacts</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
-
 <div id="app" class="container">
 	<div class="row">
 		
@@ -29,13 +9,13 @@
 			  	</div>
 			  	
 			  	<div class="panel-body">
-			  		<form id="contactForm">
+			  		<form id="contactForm" v-on:submit.prevent="saveContact">
 						<div class="form-group">
-							<input v-model="contactItem.firstName" class="form-control" value="" placeholder="First Name">
+							<input v-model="contactItem.firstName" class="form-control" value="" placeholder="First Name" required>
 						</div>
 
 						<div class="form-group">
-							<input v-model="contactItem.lastName" class="form-control" value="" placeholder="Last Name">
+							<input v-model="contactItem.lastName" class="form-control" value="" placeholder="Last Name" required>
 						</div>
 
 						<div class="form-group">
@@ -52,7 +32,7 @@
 									@click="resetContact()"
 							>Reset</button>
 							<button class="btn btn-primary"  
-									@click="saveContact()"
+								type="submit"
 							>Submit</button>
 						</div>
 					</form>

@@ -17,14 +17,15 @@
     ],
     "dependencies":{
         "coldbox":"be",
-        "testbox":"be"
+        "cbvalidation":"^1.2.1+29"
     },
     "devDependencies":{
-        
+        "testbox":"^2.4.0+80"
     },
     "installPaths":{
         "coldbox":"coldbox",
-        "testbox":"testbox"
+        "testbox":"testbox",
+        "cbvalidation":"modules/cbvalidation"
     },
     "ignore":[
         "**/.*",

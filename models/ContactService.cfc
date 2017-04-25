@@ -42,6 +42,17 @@ component accessors="true" singleton{
 	}
 
 	/**
+	 * Get a single contact
+	 */
+	 struct function get( required id ){
+	 	if( !structKeyExists( variables.contacts, arguments.id ) ){
+	 		return {};
+	 	}
+	 	return variables.contacts[ arguments.id ];
+	 }
+
+
+	/**
 	* save and return all contacts
 	* @contactID The id to save/update
 	* @data The data record

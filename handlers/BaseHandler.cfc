@@ -40,7 +40,6 @@ component extends="coldbox.system.EventHandler"{
 			// Setup General Error Response
 			prc.response
 				.setError( true )
-				.setErrorCode( e.errorCode eq 0 ? 500 : len( e.errorCode ) ? e.errorCode : 0 )
 				.addMessage( "General application error: #e.message#" )
 				.setStatusCode( 500 )
 				.setStatusText( "General application error" );
@@ -93,7 +92,6 @@ component extends="coldbox.system.EventHandler"{
 		// Setup General Error Response
 		prc.response
 			.setError( true )
-			.setErrorCode( 501 )
 			.addMessage( "Base Handler Application Error: #arguments.exception.message#" )
 			.setStatusCode( 500 )
 			.setStatusText( "General application error" );
@@ -125,7 +123,6 @@ component extends="coldbox.system.EventHandler"{
 		// Setup Response
 		prc.response = getModel( "Response" )
 			.setError( true )
-			.setErrorCode( 405 )
 			.addMessage( "InvalidHTTPMethod Execution of (#arguments.faultAction#): #event.getHTTPMethod()#" )
 			.setStatusCode( 405 )
 			.setStatusText( "Invalid HTTP Method" );

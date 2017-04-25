@@ -33,13 +33,12 @@ component extends="testbox.system.BaseSpec"{
 
 			it( "can create data packets", function(){
 				var data = { name="Luis", today = now() };
-				response.setError( true ).setData( data ).setErrorCode( 45 ).addMessage( "Nothing Important" );
+				response.setError( true ).setData( data ).addMessage( "Nothing Important" );
 				var results = response.getDataPacket();
 
 				expect( results ).toBeStruct();
 				expect(	results.data ).toBe( data );
 				expect(	results.error ).toBe( true );
-				expect(	results.errorCode ).toBe( 45 );
 				expect(	results.messages ).toBeArray().toHaveLength( 1 );
 
 				debug( results );

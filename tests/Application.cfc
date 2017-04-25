@@ -19,4 +19,17 @@ component{
 	rootPath = REReplaceNoCase( this.mappings[ "/tests" ], "tests(\\|/)", "" );
 	this.mappings[ "/root" ]   = rootPath;
 
+	this.mappings[ "/coldbox" ] 			= rootPath & "coldbox";
+	this.mappings[ "/testbox" ] 			= rootPath & "testbox";
+	this.mappings[ "/cbvalidation" ] 		= rootPath & "modules/cbValidation";
+	
+
+	// request start
+	public boolean function onRequestStart( String targetPage ){
+		pagePoolClear();
+		//ormReload();
+
+		return true;
+	}
+
 }

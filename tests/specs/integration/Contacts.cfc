@@ -18,32 +18,84 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 /*********************************** BDD SUITES ***********************************/
 
 	function run( testResults, testBox ){
-		// all your suites go here.
-		describe( "Contact Manager", function(){
+		feature( "Contacts REST API", function(){
 
-			it( "can return all contacts", function(){
-				var e = execute( event="contacts.view", renderResults = true );
-				expect( e.getRenderedContent() ).toBeJSON();
+			beforeEach(function( currentSpec ){
+				super.setup();
 			});
 
-			it( "can save a new contact", function(){
-				var body = serializeJSON( {
-					id = 12,
-					firstName = "integration",
-					lastName = "test",
-					phone = "",
-					email = ""
-				} );
-				prepareMock( getRequestContext() ).$( "getHTTPContent", body );
-
-				var e = execute( event="contacts.save", renderResults = true );
-				expect( e.getRenderedContent() ).toBeJSON()
-					.toInclude( "integration" );
+			story( "I want to get a single contact", function(){
+				given( "a valid contact ID", function(){
+					then( "then I should get a contact representation", function(){
+						getRequestContext().setValue( "id", 2 );
+						var e 			= execute( event="contacts.show", renderResults = true );
+						var response 	= getRequestContext().getPrivateValue( "response" );
+						expect( e.getRenderedContent() ).toBeJSON();
+						expect(	response.getError() ).toBeFalse();
+					});
+				});
+				given( "an invalid contact ID", function(){
+					then( "I should get a 404 error message", function(){
+						getRequestContext().setValue( "id", createUUID() );
+						var e 			= execute( event="contacts.show", renderResults = true );
+						var response 	= getRequestContext().getPrivateValue( "response" );
+						expect( e.getRenderedContent() ).toBeJSON();
+						expect(	response.getError() ).toBeTrue();
+						expect(	response.getStatusCode() ).toBe( 404 );
+					});
+				});
 			});
 
-			it( "can remove a contact", function(){
-				getRequestContext().setValue( "contactID", 1 );
-				var e = execute( event="contacts.remove", renderResults = true );
+			scenario( "User requests all contacts", function(){
+				given( "A call to the /contacts route", function(){
+					then( "I should get all contacts in the system", function(){
+						var e = execute( event="contacts.index", renderResults = true );
+						expect( e.getRenderedContent() ).toBeJSON();
+					});
+				});
+			});
+
+			story( "User can save a new contact", function(){
+				given( "valid contact credentials", function(){
+					then( "I should create a new contact in the system", function(){
+						var body = serializeJSON( {
+							id = 12,
+							firstName = "integration",
+							lastName = "test",
+							phone = "",
+							email = ""
+						} );
+						prepareMock( getRequestContext() ).$( "getHTTPContent", body );
+
+						var e = execute( event="contacts.create", renderResults = true );
+						expect( e.getRenderedContent() ).toBeJSON()
+							.toInclude( "integration" );
+					});
+				});
+				given( "invalid contact data", function(){
+					then( "I should get an error message", function(){
+						var body = {
+							id = 12,
+							firstName = "",
+							lastName = "",
+							phone = "",
+							email = ""
+						};
+						prepareMock( getRequestContext() ).$( "getHTTPContent", body );
+
+						var e 			= execute( event="contacts.create", renderResults = true );
+						var response 	= getRequestContext().getPrivateValue( "response" );
+						expect( e.getRenderedContent() ).toBeJSON();
+						debug( response );
+						expect(	response.getError() ).toBeTrue();
+						expect(	response.getStatusCode() ).toBe( 400 );
+					});
+				});
+			});
+
+			it( "I can remove a contact", function(){
+				getRequestContext().setValue( "id", 1 );
+				var e = execute( event="contacts.delete", renderResults = true );
 				var contacts = e.getPrivateValue( "response" ).getData();
 				expect(	contacts ).notToHaveKey( "1" );
 			});

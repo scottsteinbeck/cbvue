@@ -1,6 +1,6 @@
 ﻿<cfscript>
 	// Allow unique URL or combination of URLs, we recommend both enabled
-	setUniqueURLS(false);
+	setUniqueURLS( false );
 	// Auto reload configuration, true in dev makes sense to reload the routes on every request
 	//setAutoReload(false);
 	// Sets automatic route extension detection and places the extension in the rc.format variable
@@ -17,12 +17,10 @@
 		setBaseURL( "http://#cgi.HTTP_HOST#/#getSetting('AppMapping')#/index.cfm" );
 	}
 
-	// Your Application Routes
-	addRoute(
-		pattern = 'contacts/:contactID?',
-		handler = 'contacts',
-		action 	= { GET = 'view', POST = 'save', PUT = 'save', DELETE = 'remove' }
-	);
+	// Add contacts resources
+	resources( resource="contacts", restful=true );
+
+	// Default Route
 	addRoute(
 		pattern=":handler/:action?"	
 	);
