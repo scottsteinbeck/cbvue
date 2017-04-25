@@ -93,13 +93,16 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 				});
 			});
 
-			it( "I can remove a contact", function(){
-				getRequestContext().setValue( "id", 1 );
-				var e = execute( event="contacts.delete", renderResults = true );
-				var contacts = e.getPrivateValue( "response" ).getData();
-				expect(	contacts ).notToHaveKey( "1" );
+			story( "User can remove a contact", function(){
+				given( "a valid contact id", function(){
+					then( "the contact will be removed", function(){
+						getRequestContext().setValue( "id", 1 );
+						var e = execute( event="contacts.delete", renderResults = true );
+						var contacts = e.getPrivateValue( "response" ).getData();
+						expect(	contacts ).notToHaveKey( "1" );
+					});
+				});
 			});
-			
 		});
 	}
 	
