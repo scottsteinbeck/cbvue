@@ -1,7 +1,7 @@
 /**
 * I manage contacts
 */
-component accessors="true" singleton{
+component accessors="true" singleton threadsafe{
 	
 	/**
 	* Contacts DB
@@ -11,6 +11,9 @@ component accessors="true" singleton{
     * The last ID tracker
     */
     property name="lastID";
+
+    // DI
+    property name="mockdata" inject="MockData@MockDataCFC";
    
     /**
      * Constructor
@@ -86,6 +89,25 @@ component accessors="true" singleton{
 		variables.lastID = 10;
 		
 		return this;
+	}
+
+	function onDIComplete(){
+		// Prepare mock data
+		var aContacts = mockdata.mock(
+			num 		= 10,
+			id 			= "uuid",
+			createdDate = "datetime",
+			firstName 	= "fname",
+			lastName 	= "lname",
+			email 		= "email",
+			phone 		= "tel"
+		);
+
+		// Turn into struct for ease of use.
+		for( var x=1; x lte arrayLen( aContacts ); x++ ){
+			variables.contacts[ x ] = aContacts[ x ];
+			variables.contacts[ x ].id = x;
+		}
 	}
 	
 	/**

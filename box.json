@@ -17,7 +17,8 @@
     ],
     "dependencies":{
         "coldbox":"be",
-        "cbvalidation":"^1.2.1+29"
+        "cbvalidation":"^1.2.1+29",
+        "mockdatacfc":"^2.2.0"
     },
     "devDependencies":{
         "testbox":"^2.4.0+80"
@@ -25,7 +26,8 @@
     "installPaths":{
         "coldbox":"coldbox",
         "testbox":"testbox",
-        "cbvalidation":"modules/cbvalidation"
+        "cbvalidation":"modules/cbvalidation",
+        "mockdatacfc":"modules/mockdatacfc"
     },
     "ignore":[
         "**/.*",
