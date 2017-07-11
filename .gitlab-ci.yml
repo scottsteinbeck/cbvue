@@ -1,3 +1,5 @@
+image: openjdk:8-jre
+
 before_script:
   # CommandBox Keys
   - apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
