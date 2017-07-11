@@ -1,4 +1,4 @@
-image: ortussolutions/commandbox
+image: ortussolutions/commandbox:alpine
 
 stages:
   - build
@@ -10,7 +10,7 @@ build_app:
   script:
     # Install dependencies
     - box install production=true
-    
+
 run_tests:
   stage: test
   only:
