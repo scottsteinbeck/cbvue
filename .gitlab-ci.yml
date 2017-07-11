@@ -15,7 +15,7 @@ stages:
 run_tests:
   stage: test
   only:
-    - development
+    - master
   #when: manual, always, on_success, on_failure
   script:
       - box testbox run
