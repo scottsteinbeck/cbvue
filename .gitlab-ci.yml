@@ -1,23 +1,21 @@
 image: ortussolutions/commandbox
 
-before_script:
-  # CommandBox Keys
-  #- apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
-  #- echo "deb http://downloads.ortussolutions.com/debs/noarch /" | tee -a /etc/apt/sources.list.d/commandbox.list
-  # Install CommandBox
-  #- apt-get update && apt-get --assume-yes install git haveged rsync commandbox
-
-# Define Stages
 stages:
   - build
   - test
   - deploy
 
-# top level keys can be assigned to stages, environments or branches
+build_app:
+  stage: build
+  script:
+    # Install dependencies
+    - box install production=true
+    
 run_tests:
   stage: test
   only:
     - master
-  #when: manual, always, on_success, on_failure
+  # when: manual, always, on_success, on_failure
   script:
+      - box server start
       - box testbox run
