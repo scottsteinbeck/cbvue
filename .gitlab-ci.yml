@@ -8,7 +8,6 @@ stages:
 build_app:
   stage: build
   script:
-    # Install dependencies
     - box install production=true
 
 run_tests:
@@ -17,5 +16,6 @@ run_tests:
     - master
   # when: manual, always, on_success, on_failure
   script:
-      - box server start
-      - box testbox run
+    - box install
+    - box server start
+    - box testbox run
