@@ -30,8 +30,7 @@
         "mockdatacfc":"modules/mockdatacfc"
     },
     "ignore":[
-        "**/.*",
-        "tests"
+        "**/.*"
     ],
     "testbox":{
         "runner":[
