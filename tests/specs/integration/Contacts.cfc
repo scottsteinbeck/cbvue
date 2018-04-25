@@ -71,7 +71,10 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 							phone = "",
 							email = ""
 						} );
-						prepareMock( getRequestContext() ).$( "getHTTPContent", body );
+
+						prepareMock( getRequestContext() )
+							.$( "getHTTPMethod", "POST" )
+							.$( "getHTTPContent", body );
 
 						var e = execute( event="contacts.create", renderResults = true );
 						expect( e.getRenderedContent() ).toBeJSON()
@@ -87,10 +90,14 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 							phone = "",
 							email = ""
 						};
-						prepareMock( getRequestContext() ).$( "getHTTPContent", body );
+						
+						prepareMock( getRequestContext() )
+							.$( "getHTTPMethod", "POST" )
+							.$( "getHTTPContent", body );
 
 						var e 			= execute( event="contacts.create", renderResults = true );
 						var response 	= getRequestContext().getPrivateValue( "response" );
+						
 						expect( e.getRenderedContent() ).toBeJSON();
 						debug( response );
 						expect(	response.getError() ).toBeTrue();
@@ -103,6 +110,10 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 				given( "a valid contact id", function(){
 					then( "the contact will be removed", function(){
 						getRequestContext().setValue( "id", 1 );
+						
+						prepareMock( getRequestContext() )
+							.$( "getHTTPMethod", "DELETE" )
+
 						var e = execute( event="contacts.delete", renderResults = true );
 						var contacts = e.getPrivateValue( "response" ).getData();
 						expect(	contacts ).notToHaveKey( "1" );
