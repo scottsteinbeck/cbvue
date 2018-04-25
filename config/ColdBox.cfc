@@ -34,7 +34,7 @@ component{
 
 			//Error/Exception Handling
 			exceptionHandler		= "",
-			onInvalidEvent			= "",
+			invalidEventHandler		= "",
 			customErrorTemplate		= "",
 
 			//Application Aspects
@@ -53,16 +53,6 @@ component{
 		// the value of the environment is a list of regex patterns to match the cgi.http_host.
 		environments = {
 			development = "localhost,^127\.0\.0"
-		};
-
-		// Module Directives
-		modules = {
-			//Turn to false in production
-			autoReload = false,
-			// An array of modules names to load, empty means all of them
-			include = [],
-			// An array of modules names to NOT load, empty means none
-			exclude = []
 		};
 
 		//LogBox DSL
@@ -85,47 +75,7 @@ component{
 
 		//Register interceptors as an array, we need order
 		interceptors = [
-			//SES
-			{class="coldbox.system.interceptors.SES",
-			 properties={}
-			}
 		];
-
-		/*
-		// flash scope configuration
-		flash = {
-			scope = "session,client,cluster,ColdboxCache,or full path",
-			properties = {}, // constructor properties for the flash scope implementation
-			inflateToRC = true, // automatically inflate flash data into the RC scope
-			inflateToPRC = false, // automatically inflate flash data into the PRC scope
-			autoPurge = true, // automatically purge flash data for you
-			autoSave = true // automatically save flash scopes at end of a request and on relocations.
-		};
-
-		//Register Layouts
-		layouts = [
-			{ name = "login",
-		 	  file = "Layout.tester.cfm",
-			  views = "vwLogin,test",
-			  folders = "tags,pdf/single"
-			}
-		];
-
-		//Conventions
-		conventions = {
-			handlersLocation = "handlers",
-			viewsLocation 	 = "views",
-			layoutsLocation  = "layouts",
-			modelsLocation 	 = "models",
-			eventAction 	 = "index"
-		};
-
-		//Datasources
-		datasources = {
-			mysite   = {name="mySite", dbType="mysql", username="root", password="pass"},
-			blog_dsn = {name="myBlog", dbType="oracle", username="root", password="pass"}
-		};
-		*/
 
 	}
 
