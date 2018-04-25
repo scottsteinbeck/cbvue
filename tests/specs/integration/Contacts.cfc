@@ -31,6 +31,7 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 						var e 			= execute( event="contacts.show", renderResults = true );
 						var response 	= getRequestContext().getPrivateValue( "response" );
 						expect( e.getRenderedContent() ).toBeJSON();
+						//debug( e.getRenderedContent() );
 						expect(	response.getError() ).toBeFalse();
 					});
 				});
@@ -49,8 +50,13 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root"{
 			scenario( "User requests all contacts", function(){
 				given( "A call to the /contacts route", function(){
 					then( "I should get all contacts in the system", function(){
-						var e = execute( event="contacts.index", renderResults = true );
+						var e 			= execute( event="contacts.index", renderResults = true );
+						var response 	= getRequestContext().getPrivateValue( "response" );
+						debug( e.getRenderedContent() );
 						expect( e.getRenderedContent() ).toBeJSON();
+						expect(	response.getError() ).toBeFalse( "Error in call" );
+						expect(	response.getStatusCode() ).toBe( 200 );
+						expect(	response.getData() ).toHaveDeepKey( "firstname" );
 					});
 				});
 			});

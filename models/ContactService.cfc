@@ -100,7 +100,9 @@ component accessors="true" singleton threadsafe{
 			firstName 	= "fname",
 			lastName 	= "lname",
 			email 		= "email",
-			phone 		= "tel"
+			phone 		= "tel",
+			age 		= "age",
+			notes 		= "baconlorem"
 		);
 
 		// Turn into struct for ease of use.
